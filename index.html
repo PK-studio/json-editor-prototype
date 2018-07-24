@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Tool Box</title>
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0">
+	
+	<!-- Load CSS first to stop the unstyled flash -->
+	<link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+	<nav class="nav_bar">
+		<div class="button_box">
+			<input type="file" id="files" multiple />
+			<output id="list"></output>
+			<button id="load" class="start">Load File</button>
+			<button id="download" >Download Json</button>
+			<!-- <button id="export" >Export Docx</button> -->
+			<a id="downloadAnchorElem" style="display:none"></a>
+		</div>
+		<form class="text-editor-box">
+			<textarea id="text_editor"></textarea>
+		</form>
+	</nav>
+
+	<div class="main-content">
+		<div class="templateRoom" data-bind="template: { name: 'table_for_objs', foreach: renderContent }"></div>
+		<!-- <button data-bind="click: addPerson">Add</button> -->
+	</div>
+
+	<!-- js -->
+	<script type="text/html" id="table_for_objs">
+		<div class="box">
+			<div class="left">
+				<span data-bind="click: toggleReferences"></span>
+				<p data-bind="text: key"></p>
+			</div>
+			<div class="middle">
+				<div class="orginal">
+					<p data-bind="html: orginal"></p>
+				</div>
+				<div class="preview">
+					<p data-bind="html: value"></p>
+				</div>
+			</div>
+			<div class="right">
+				<textarea rows="1" type="text" data-bind="textInput: value"></textarea>
+			</div>
+		</div>
+	</script>
+
+	<script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js'></script>
+	<script type='text/javascript' src='js/vendors/jszip.min.js'></script>
+	<script type='text/javascript' src='js/vendors/jszip-utils.min.js'></script>
+	<script type='text/javascript' src='js/vendors/FileSaver.min.js'></script>
+	<script type='text/javascript' src='js/vendors/docxtemplater.js'></script>
+	<script type='text/javascript' src='js/vendors/underscore-min.js'></script>
+	<script type='text/javascript' src='tinymce/tinymce.min.js'></script>
+	<!-- <script type='text/javascript' src="setting.js"></script> -->
+	<script type='text/javascript' src="main.js"></script>
+</body>
+
+</html>
